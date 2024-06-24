@@ -51,11 +51,14 @@ jobs:
       - name: Build Typescript
         run: npx lerna run build
 
-      - name: Run RPC Server
-        run: npm run integration:prerequisite &
+      - name: Start the hedera local node
+        run: npx hedera start -d
 
-      - name: Check local node
-        run: npm run check:node
+      - name: Stop relay
+        run: docker stop json-rpc-relay
+
+      - name: Start relay
+        run: npm run start
 
       - name: Build, Bootstrap & Test the dapp in Docker
         run: docker-compose up --exit-code-from synpress
