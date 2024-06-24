@@ -58,7 +58,7 @@ jobs:
         run: docker stop json-rpc-relay
 
       - name: Start relay
-        run: npm run start
+        run: npm run start &
 
       - name: Build, Bootstrap & Test the dapp in Docker
         run: docker-compose up --exit-code-from synpress
