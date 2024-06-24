@@ -54,10 +54,10 @@ jobs:
       - name: Start the hedera local node
         run: npx hedera start -d
 
-      - name: Stop relay
+      - name: Stop the local node's relay
         run: docker stop json-rpc-relay
 
-      - name: Start relay
+      - name: Start the local relay
         run: npm run start &
 
       - name: Build, Bootstrap & Test the dapp in Docker
